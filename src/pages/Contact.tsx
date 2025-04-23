@@ -63,15 +63,15 @@ const Contact = () => {
             <Box sx={{ mt: 2 }}>
               <Button
                 startIcon={<EmailIcon />}
-                href="mailto:your.email@example.com"
+                href="mailto:karishmayadav1517@gmail.com"
                 sx={{ mb: 2 }}
               >
-                your.email@example.com
+                karishmayadav1517@gmail.com
               </Button>
               <br />
               <Button
                 startIcon={<LinkedInIcon />}
-                href="https://linkedin.com/in/your-profile"
+                href="https://www.linkedin.com/in/karishma-yadav2004/"
                 target="_blank"
                 sx={{ mb: 2 }}
               >
@@ -80,7 +80,7 @@ const Contact = () => {
               <br />
               <Button
                 startIcon={<GitHubIcon />}
-                href="https://github.com/your-username"
+                href="https://github.com/yadav-karishma"
                 target="_blank"
               >
                 GitHub Profile

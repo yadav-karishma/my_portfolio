@@ -1,8 +1,10 @@
-import React from 'react';
-import { Container, Typography, Box, Card, CardContent, CardActions, Button, useTheme, Chip } from '@mui/material';
+import React, { useState } from 'react';
+import { Container, Typography, Box, Card, CardContent, CardActions, Button, useTheme, Chip, IconButton } from '@mui/material';
 import { keyframes } from '@mui/system';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import LaunchIcon from '@mui/icons-material/Launch';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const fadeIn = keyframes`
   from {
@@ -15,38 +17,50 @@ const fadeIn = keyframes`
   }
 `;
 
+const float = keyframes`
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+`;
+
 const Projects = () => {
   const theme = useTheme();
+  const [showAll, setShowAll] = useState(false);
+
   const projects = [
     {
       title: 'Quiz Management System',
-      description: 'Developed a full-stack quiz platform for LPU students, featuring OTP-based student registration, teacher-created quizzes, scheduled access, and secure result management.',
+      description: 'Developed a full-stack quiz platform for LPU students, featuring OTP-based student registration, teacher-created quizzes, scheduled access, and secure result management. Implemented real-time updates and analytics dashboard for performance tracking.',
       technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Brevo API'],
-      githubLink: '#',
-      liveLink: '#'
+      githubLink: 'https://github.com/yadav-karishma/quiz_system'
     },
     {
       title: 'Tic Tac Toe Game',
       description: 'Developed an interactive Tic Tac Toe game using HTML, CSS, JavaScript, and React, featuring a clean, user-friendly interface for smooth gameplay. Integrated two-player functionality and enhanced the overall user experience with responsive design elements.',
       technologies: ['HTML', 'CSS', 'JavaScript', 'React.js'],
-      githubLink: '#',
-      liveLink: '#'
+      githubLink: 'https://github.com/yadav-karishma/tic-tac-toe'
     },
     {
       title: 'Sudoku Solver',
       description: 'Developed a Sudoku solver in Python, leveraging backtracking algorithms for efficient and accurate puzzle solving. Created a user-friendly interface for custom puzzle input and optimized the algorithm for complex puzzles.',
       technologies: ['Python', 'Backtracking Algorithm'],
-      githubLink: '#',
-      liveLink: '#'
+      githubLink: 'https://github.com/yadav-karishma'
     },
     {
       title: 'Restaurant Website',
       description: 'Designed a restaurant website to deliver comprehensive information, showcase the menu, highlight special offers, and enable seamless online booking. Created an eye-catching promotional poster and implemented a pre-table booking system.',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      githubLink: '#',
-      liveLink: '#'
+      githubLink: 'https://github.com/yadav-karishma/Ready-Set-Banquet-Restaurant'
     }
   ];
+
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
     <Container maxWidth="lg">
@@ -73,8 +87,7 @@ const Projects = () => {
             mb: 6,
           }}
         >
-          Here are some of the projects I've worked on. Each project represents a unique challenge
-          and learning experience.
+          
         </Typography>
 
         <Box
@@ -85,25 +98,52 @@ const Projects = () => {
             animation: `${fadeIn} 1s ease-out 0.6s both`,
           }}
         >
-          {projects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <Card
               key={index}
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
+                minHeight: '400px',
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255,255,255,0.1)',
                 '&:hover': {
-                  transform: 'translateY(-5px)',
-                  boxShadow: '0 8px 16px rgba(0,0,0,0.4)',
+                  transform: 'translateY(-10px)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+                  '& .project-icon': {
+                    transform: 'scale(1.1) rotate(5deg)',
+                  },
                 },
-                transition: 'all 0.3s ease',
+                transition: 'all 0.4s ease',
+                animation: `${float} 3s ease-in-out infinite`,
+                animationDelay: `${index * 0.1}s`,
               }}
             >
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h5" component="h2" gutterBottom color="primary">
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                <Typography 
+                  variant="h5" 
+                  component="h2" 
+                  gutterBottom 
+                  color="primary"
+                  sx={{ 
+                    fontWeight: 600,
+                    mb: 2,
+                  }}
+                >
                   {project.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
+                <Typography 
+                  variant="body2" 
+                  color="text.secondary" 
+                  paragraph
+                  sx={{
+                    flexGrow: 1,
+                    lineHeight: 1.8,
+                    fontSize: '1rem',
+                  }}
+                >
                   {project.description}
                 </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
@@ -124,28 +164,48 @@ const Projects = () => {
               </CardContent>
               <CardActions sx={{ p: 2, pt: 0 }}>
                 <Button
+                  variant="contained"
+                  color="primary"
                   startIcon={<GitHubIcon />}
                   href={project.githubLink}
                   target="_blank"
-                  variant="outlined"
-                  color="primary"
-                  sx={{ mr: 1 }}
+                  sx={{
+                    width: '100%',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
+                    },
+                    transition: 'all 0.3s ease',
+                  }}
                 >
                   Source Code
-                </Button>
-                <Button
-                  startIcon={<LaunchIcon />}
-                  href={project.liveLink}
-                  target="_blank"
-                  variant="contained"
-                  color="primary"
-                >
-                  Live Demo
                 </Button>
               </CardActions>
             </Card>
           ))}
         </Box>
+
+        {projects.length > 3 && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => setShowAll(!showAll)}
+              endIcon={showAll ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+              sx={{
+                px: 4,
+                py: 1.5,
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+                },
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {showAll ? 'Show Less' : 'View All Projects'}
+            </Button>
+          </Box>
+        )}
       </Box>
     </Container>
   );

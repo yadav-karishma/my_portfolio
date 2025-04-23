@@ -1,50 +1,127 @@
 import React from 'react';
 import { Container, Typography, Box, Paper } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
+import { keyframes } from '@mui/system';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const Education = () => {
   const education = [
     {
-      degree: 'Bachelor of Technology in Computer Science',
-      school: 'Your University Name',
-      year: '2020 - 2024',
-      description: 'Relevant coursework: Data Structures, Algorithms, Database Management, Web Development'
+      degree: 'Bachelor of Technology - Computer Science and Engineering',
+      school: 'Lovely Professional University',
+      location: 'Jalandhar, Punjab, India',
+      period: 'August 2022 - May 2026',
+      score: 'CGPA: 8.23',
+      courses: ['Object Oriented Programming', 'DSA', 'Computer Networks', 'Operating Systems']
     },
     {
-      degree: 'High School Diploma',
-      school: 'Your High School Name',
-      year: '2018 - 2020',
-      description: 'Focus on Mathematics and Science'
+      degree: 'Senior Secondary',
+      school: 'R.P.M Academy',
+      location: 'Gorakhpur, UP, India',
+      period: 'April 2021 - May 2022',
+      score: 'Score: 87%',
+      courses: ['Mathematics', 'Chemistry', 'Physics']
+    },
+    {
+      degree: 'Matriculation',
+      school: 'R.P.M Academy',
+      location: 'Gorakhpur, UP, India',
+      period: 'April 2019 - May 2020',
+      score: 'Score: 89.6%',
+      courses: ['Mathematics', 'Chemistry', 'Physics', 'Biology']
     }
   ];
 
   return (
     <Container maxWidth="md">
       <Box sx={{ mt: 4, mb: 4 }}>
-        <Typography variant="h3" component="h1" gutterBottom>
+        <Typography
+          variant="h3"
+          component="h1"
+          gutterBottom
+          sx={{
+            animation: `${fadeIn} 1s ease-out`,
+            color: 'primary.main',
+            mb: 4,
+          }}
+        >
           Education
         </Typography>
-        <Typography variant="body1" paragraph>
-          My academic journey and qualifications
+        <Typography
+          variant="body1"
+          paragraph
+          sx={{
+            animation: `${fadeIn} 1s ease-out 0.3s both`,
+            fontSize: '1.1rem',
+            lineHeight: 1.8,
+          }}
+        >
+          
         </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 3,
+            animation: `${fadeIn} 1s ease-out 0.6s both`,
+          }}
+        >
           {education.map((edu, index) => (
-            <Paper key={index} elevation={3} sx={{ p: 3, display: 'flex', alignItems: 'flex-start' }}>
+            <Paper
+              key={index}
+              elevation={3}
+              sx={{
+                p: 3,
+                display: 'flex',
+                alignItems: 'flex-start',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 8px 16px rgba(0,0,0,0.4)',
+                },
+                transition: 'all 0.3s ease',
+              }}
+            >
               <SchoolIcon color="primary" sx={{ mr: 2, mt: 0.5 }} />
               <Box>
-                <Typography variant="h6" component="h2">
+                <Typography variant="h6" component="h2" sx={{ fontWeight: 600 }}>
                   {edu.degree}
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary">
                   {edu.school}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {edu.year}
+                  {edu.location} | {edu.period}
                 </Typography>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  {edu.description}
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                  {edu.score}
                 </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1 }}>
+                  {edu.courses.map((course, courseIndex) => (
+                    <Typography
+                      key={courseIndex}
+                      variant="body2"
+                      sx={{
+                        bgcolor: 'rgba(255,255,255,0.1)',
+                        px: 1.5,
+                        py: 0.5,
+                        borderRadius: 1,
+                      }}
+                    >
+                      {course}
+                    </Typography>
+                  ))}
+                </Box>
               </Box>
             </Paper>
           ))}

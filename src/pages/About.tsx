@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box, useTheme, Divider, Link, Paper } from '@mui/material';
+import { Container, Typography, Box, useTheme, Divider, Link } from '@mui/material';
 import { keyframes } from '@mui/system';
 import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -22,6 +22,9 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CodeOffIcon from '@mui/icons-material/CodeOff';
 import StarIcon from '@mui/icons-material/Star';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import CardMembershipIcon from '@mui/icons-material/CardMembership';
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
+import WebIcon from '@mui/icons-material/Web';
 
 const fadeIn = keyframes`
   from {
@@ -61,39 +64,13 @@ const About = () => {
   const skills = [
     { icon: <CodeIcon sx={{ fontSize: 40 }} />, name: 'C/C++', color: '#2196f3' },
     { icon: <LanguageIcon sx={{ fontSize: 40 }} />, name: 'Python', color: '#4caf50' },
-    { icon: <BrushIcon sx={{ fontSize: 40 }} />, name: 'HTML/CSS', color: '#f50057' },
-    { icon: <DevicesIcon sx={{ fontSize: 40 }} />, name: 'JavaScript', color: '#ff9800' },
+    { icon: <BrushIcon sx={{ fontSize: 40 }} />, name: 'HTML', color: '#f50057' },
+    { icon: <BrushIcon sx={{ fontSize: 40 }} />, name: 'CSS', color: '#f50057' },
+    { icon: <CodeIcon sx={{ fontSize: 40 }} />, name: 'JavaScript', color: '#ff9800' },
     { icon: <StorageIcon sx={{ fontSize: 40 }} />, name: 'SQL', color: '#9c27b0' },
     { icon: <CloudIcon sx={{ fontSize: 40 }} />, name: 'React.js', color: '#00bcd4' },
     { icon: <SecurityIcon sx={{ fontSize: 40 }} />, name: 'Node.js', color: '#f44336' },
     { icon: <DataObjectIcon sx={{ fontSize: 40 }} />, name: 'MongoDB', color: '#795548' },
-  ];
-
-  const achievements = [
-    {
-      icon: <CodeOffIcon sx={{ fontSize: 40 }} />,
-      title: 'Coding Problems Solved',
-      description: 'Solved over 350+ coding problems on CodeChef, Leetcode and GeeksForGeeks',
-      color: '#2196f3'
-    },
-    {
-      icon: <EmojiEventsIcon sx={{ fontSize: 40 }} />,
-      title: 'CodeKaze Competition',
-      description: 'Achieved AIR 9,138 in Coding Ninjas\' CodeKaze competition',
-      color: '#ffd700'
-    },
-    {
-      icon: <StarIcon sx={{ fontSize: 40 }} />,
-      title: 'HackerRank Achievements',
-      description: 'Earned Silver level in Python and Java on HackerRank',
-      color: '#c0c0c0'
-    },
-    {
-      icon: <MilitaryTechIcon sx={{ fontSize: 40 }} />,
-      title: '30 Days of Code',
-      description: 'Achieved bronze level in \'30 Days of Code\' challenge',
-      color: '#cd7f32'
-    }
   ];
 
   return (
@@ -121,7 +98,7 @@ const About = () => {
               mb: 3,
             }}
           >
-            Computer Science Student at Lovely Professional University
+            
           </Typography>
           <Box
             sx={{
@@ -154,9 +131,9 @@ const About = () => {
               lineHeight: 1.8,
             }}
           >
-            I am a passionate Computer Science student with a strong foundation in programming and web development.
-            I love solving complex problems and creating innovative solutions. My journey in technology has been
-            driven by curiosity and a desire to build things that make a difference.
+            I am a B.Tech (Hons.) Computer Science and Engineering student with a solid foundation in programming and web development. I enjoy tackling complex problems and developing innovative solutions. My journey in technology is fueled by curiosity and a strong desire to create impactful and meaningful applications.
+
+
           </Typography>
         </Box>
 
@@ -319,73 +296,112 @@ const About = () => {
           <Box
             sx={{
               animation: `${fadeIn} 1s ease-out 2.7s both`,
-              display: 'flex',
-              overflowX: 'auto',
-              gap: 3,
-              pb: 2,
-              '&::-webkit-scrollbar': {
-                height: '8px',
-              },
-              '&::-webkit-scrollbar-track': {
-                background: 'rgba(255, 255, 255, 0.1)',
-                borderRadius: '4px',
-              },
-              '&::-webkit-scrollbar-thumb': {
-                background: 'rgba(255, 255, 255, 0.2)',
-                borderRadius: '4px',
-                '&:hover': {
-                  background: 'rgba(255, 255, 255, 0.3)',
-                },
-              },
+              position: 'relative',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                left: '20px',
+                top: 0,
+                bottom: 0,
+                width: '2px',
+                background: 'linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.3))',
+              }
             }}
           >
-            {achievements.map((achievement, index) => (
-              <Paper
+            {[
+              {
+                icon: <CodeOffIcon sx={{ fontSize: 24 }} />,
+                title: 'Coding Problems Solved',
+                description: 'Solved over 350+ coding problems on CodeChef, Leetcode and GeeksForSolved 350+ coding problems across platforms like CodeChef, LeetCode, and GeeksforGeeks, demonstrating strong problem-solving skills.Geeks',
+                color: '#2196f3'
+              },
+              {
+                icon: <EmojiEventsIcon sx={{ fontSize: 24 }} />,
+                title: 'CodeKaze Competition',
+                description: 'Secured an All India Rank of 9,138 in Coding Ninjas CodeKaze competition, showcasing competitive programming proficiency',
+                color: '#ffd700'
+              },
+              {
+                icon: <StarIcon sx={{ fontSize: 24 }} />,
+                title: 'HackerRank Achievements',
+                description: 'Earned Silver badges in Python and Java on HackerRank, reflecting versatility in programming languages.',
+                color: '#c0c0c0'
+              },
+              {
+                icon: <MilitaryTechIcon sx={{ fontSize: 24 }} />,
+                title: '30 Days of Code',
+                description: 'Completed the 30 Days of Code challenge on HackerRank with a Bronze badge, highlighting consistency in coding practice.',
+                color: '#cd7f32'
+              }
+            ].map((achievement, index) => (
+              <Box
                 key={index}
-                elevation={3}
                 sx={{
-                  minWidth: 300,
-                  p: 3,
                   display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: 2,
-                  bgcolor: 'background.paper',
-                  borderRadius: 4,
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: '0 8px 16px rgba(0,0,0,0.4)',
-                    '& .achievement-icon': {
-                      animation: `${rotate} 1s linear infinite`,
-                    },
-                  },
-                  transition: 'all 0.3s ease',
-                  animation: `${float} 3s ease-in-out infinite`,
-                  animationDelay: `${index * 0.1}s`,
+                  alignItems: 'flex-start',
+                  mb: 4,
+                  position: 'relative',
+                  '&:last-child': {
+                    mb: 0
+                  }
                 }}
               >
                 <Box
-                  className="achievement-icon"
                   sx={{
-                    color: achievement.color,
-                    p: 2,
+                    width: '40px',
+                    height: '40px',
                     borderRadius: '50%',
-                    bgcolor: 'rgba(255, 255, 255, 0.05)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: 'background.paper',
+                    border: `2px solid ${achievement.color}`,
+                    color: achievement.color,
+                    position: 'relative',
+                    zIndex: 1,
+                    boxShadow: '0 0 0 4px rgba(255,255,255,0.1)',
                     '&:hover': {
-                      bgcolor: 'rgba(255, 255, 255, 0.1)',
+                      transform: 'scale(1.1)',
+                      boxShadow: `0 0 0 4px ${achievement.color}33`,
+                      '& .achievement-icon': {
+                        animation: `${rotate} 1s linear infinite`,
+                      },
                     },
+                    transition: 'all 0.3s ease',
                   }}
                 >
-                  {achievement.icon}
+                  <Box className="achievement-icon">
+                    {achievement.icon}
+                  </Box>
                 </Box>
-                <Typography variant="h6" color="text.primary" align="center">
-                  {achievement.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" align="center">
-                  {achievement.description}
-                </Typography>
-              </Paper>
+                <Box
+                  sx={{
+                    ml: 3,
+                    flex: 1,
+                    pt: 0.5,
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    color="text.primary"
+                    sx={{
+                      mb: 0.5,
+                      fontWeight: 600,
+                    }}
+                  >
+                    {achievement.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {achievement.description}
+                  </Typography>
+                </Box>
+              </Box>
             ))}
           </Box>
         </Box>

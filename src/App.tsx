@@ -2,12 +2,29 @@ import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Container } from '@mui/material';
+import { keyframes } from '@mui/system';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Education from './pages/Education';
+import Certificates from './pages/Certificates';
 import Contact from './pages/Contact';
+
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+`;
 
 const theme = createTheme({
   palette: {
@@ -84,10 +101,25 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="App" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
-        minHeight: '100vh',
-      }}>
+      <Box
+        sx={{
+          background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
+          minHeight: '100vh',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle at 50% 50%, rgba(144, 202, 249, 0.1) 0%, transparent 50%)',
+            animation: `${pulse} 8s ease-in-out infinite`,
+          }}
+        />
         <Navbar />
         <Container maxWidth="lg">
           <Box id="home" sx={{ minHeight: '100vh', pt: 8, pb: 4 }}>
@@ -102,11 +134,14 @@ function App() {
           <Box id="education" sx={{ minHeight: '100vh', pt: 8, pb: 4, bgcolor: 'background.default' }}>
             <Education />
           </Box>
-          <Box id="contact" sx={{ minHeight: '100vh', pt: 8, pb: 4 }}>
+          <Box id="certificates" sx={{ minHeight: '100vh', pt: 8, pb: 4 }}>
+            <Certificates />
+          </Box>
+          <Box id="contact" sx={{ minHeight: '100vh', pt: 8, pb: 4, bgcolor: 'background.default' }}>
             <Contact />
           </Box>
         </Container>
-      </div>
+      </Box>
     </ThemeProvider>
   );
 }
