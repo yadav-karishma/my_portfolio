@@ -1,5 +1,17 @@
 import React from 'react';
-import { Container, Typography, Box, useTheme, Divider, Link } from '@mui/material';
+import {
+  SiCplusplus,
+  SiPython,
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiMysql,
+  SiReact,
+  SiNodedotjs,
+  SiMongodb,
+} from "react-icons/si";
+import type { IconType } from 'react-icons';
+import { Container, Typography, Box, useTheme, Divider, Link, Button } from '@mui/material';
 import { keyframes } from '@mui/system';
 import CodeIcon from '@mui/icons-material/Code';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -25,6 +37,7 @@ import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import CardMembershipIcon from '@mui/icons-material/CardMembership';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import WebIcon from '@mui/icons-material/Web';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 const fadeIn = keyframes`
   from {
@@ -58,20 +71,32 @@ const rotate = keyframes`
   }
 `;
 
+interface Skill {
+  name: string;
+  color: string;
+  icon: IconType;
+}
+
 const About = () => {
   const theme = useTheme();
 
-  const skills = [
-    { icon: <CodeIcon sx={{ fontSize: 40 }} />, name: 'C/C++', color: '#2196f3' },
-    { icon: <LanguageIcon sx={{ fontSize: 40 }} />, name: 'Python', color: '#4caf50' },
-    { icon: <BrushIcon sx={{ fontSize: 40 }} />, name: 'HTML', color: '#f50057' },
-    { icon: <BrushIcon sx={{ fontSize: 40 }} />, name: 'CSS', color: '#f50057' },
-    { icon: <CodeIcon sx={{ fontSize: 40 }} />, name: 'JavaScript', color: '#ff9800' },
-    { icon: <StorageIcon sx={{ fontSize: 40 }} />, name: 'SQL', color: '#9c27b0' },
-    { icon: <CloudIcon sx={{ fontSize: 40 }} />, name: 'React.js', color: '#00bcd4' },
-    { icon: <SecurityIcon sx={{ fontSize: 40 }} />, name: 'Node.js', color: '#f44336' },
-    { icon: <DataObjectIcon sx={{ fontSize: 40 }} />, name: 'MongoDB', color: '#795548' },
+  const skills: Skill[] = [
+    { name: 'C', color: '#A8B9CC', icon: SiCplusplus },
+    { name: 'C++', color: '#00599C', icon: SiCplusplus },
+    { name: 'Python', color: '#3776AB', icon: SiPython },
+    { name: 'HTML', color: '#E34F26', icon: SiHtml5 },
+    { name: 'CSS', color: '#1572B6', icon: SiCss3 },
+    { name: 'JavaScript', color: '#F7DF1E', icon: SiJavascript },
+    { name: 'SQL', color: '#4479A1', icon: SiMysql },
+    { name: 'React.js', color: '#61DAFB', icon: SiReact },
+    { name: 'Node.js', color: '#339933', icon: SiNodedotjs },
+    { name: 'MongoDB', color: '#47A248', icon: SiMongodb },
   ];
+
+  const handleResumeClick = () => {
+    // Replace with your actual resume URL
+    window.open('https://ibb.co/kTTHn5k', '_blank');
+  };
 
   return (
     <Container maxWidth="md">
@@ -121,6 +146,22 @@ const About = () => {
             <Link href="tel:+918174888945" color="inherit" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <PhoneIcon /> Phone
             </Link>
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<DescriptionIcon />}
+              onClick={handleResumeClick}
+              sx={{
+                ml: 2,
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+                },
+                transition: 'all 0.3s ease',
+              }}
+            >
+              View Resume
+            </Button>
           </Box>
           <Typography
             variant="body1"
@@ -132,8 +173,6 @@ const About = () => {
             }}
           >
             I am a B.Tech (Hons.) Computer Science and Engineering student with a solid foundation in programming and web development. I enjoy tackling complex problems and developing innovative solutions. My journey in technology is fueled by curiosity and a strong desire to create impactful and meaningful applications.
-
-
           </Typography>
         </Box>
 
@@ -159,49 +198,52 @@ const About = () => {
               animation: `${fadeIn} 1s ease-out 1.5s both`,
             }}
           >
-            {skills.map((skill, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  p: 3,
-                  bgcolor: 'background.paper',
-                  borderRadius: 4,
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: '0 8px 16px rgba(0,0,0,0.4)',
-                    '& .skill-icon': {
-                      animation: `${rotate} 1s linear infinite`,
-                    },
-                  },
-                  transition: 'all 0.3s ease',
-                  animation: `${float} 3s ease-in-out infinite`,
-                  animationDelay: `${index * 0.1}s`,
-                }}
-              >
+            {skills.map((skill, index) => {
+              const IconComponent = skill.icon as React.ComponentType<{ size: number; color: string }>;
+              return (
                 <Box
-                  className="skill-icon"
+                  key={index}
                   sx={{
-                    color: skill.color,
-                    mb: 1,
-                    p: 2,
-                    borderRadius: '50%',
-                    bgcolor: 'rgba(255, 255, 255, 0.05)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    p: 3,
+                    bgcolor: 'background.paper',
+                    borderRadius: 4,
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
                     '&:hover': {
-                      bgcolor: 'rgba(255, 255, 255, 0.1)',
+                      transform: 'translateY(-5px)',
+                      boxShadow: '0 8px 16px rgba(0,0,0,0.4)',
+                      '& .skill-icon': {
+                        animation: `${rotate} 1s linear infinite`,
+                      },
                     },
+                    transition: 'all 0.3s ease',
+                    animation: `${float} 3s ease-in-out infinite`,
+                    animationDelay: `${index * 0.1}s`,
                   }}
                 >
-                  {skill.icon}
+                  <Box
+                    className="skill-icon"
+                    sx={{
+                      color: skill.color,
+                      mb: 1,
+                      p: 2,
+                      borderRadius: '50%',
+                      bgcolor: 'rgba(255, 255, 255, 0.05)',
+                      '&:hover': {
+                        bgcolor: 'rgba(255, 255, 255, 0.1)',
+                      },
+                    }}
+                  >
+                    <IconComponent size={40} color={skill.color} />
+                  </Box>
+                  <Typography variant="h6" color="text.primary">
+                    {skill.name}
+                  </Typography>
                 </Box>
-                <Typography variant="h6" color="text.primary">
-                  {skill.name}
-                </Typography>
-              </Box>
-            ))}
+              );
+            })}
           </Box>
         </Box>
 

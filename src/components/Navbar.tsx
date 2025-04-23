@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import VideocamIcon from '@mui/icons-material/Videocam';
 
 const Navbar = () => {
   const scrollToSection = (sectionId: string) => {
@@ -7,6 +8,11 @@ const Navbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleVideoResumeClick = () => {
+    // Replace with your actual video resume URL
+    window.open('https://drive.google.com/file/d/1l0HF5kvp09FPZMXDGGvkFLOCifPNWXx1/view?usp=sharing', '_blank');
   };
 
   return (
@@ -33,6 +39,19 @@ const Navbar = () => {
           </Button>
           <Button color="inherit" onClick={() => scrollToSection('contact')}>
             Contact
+          </Button>
+          <Button 
+            color="inherit" 
+            onClick={handleVideoResumeClick}
+            startIcon={<VideocamIcon />}
+            sx={{
+              ml: 1,
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              },
+            }}
+          >
+            Video Resume
           </Button>
         </Box>
       </Toolbar>

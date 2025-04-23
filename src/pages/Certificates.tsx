@@ -40,7 +40,7 @@ const Certificates = () => {
       title: 'Data Structure and Algorithm',
       provider: 'Programming Pathshala',
       color: '#2196f3',
-      link: 'https://drive.google.com/file/d/your-dsa-certificate-link/view'
+      link: 'https://ibb.co/4ZBQz0rn'
     },
     {
       icon: <CloudQueueIcon sx={{ fontSize: 24 }} />,
@@ -61,7 +61,7 @@ const Certificates = () => {
       title: 'Become a Full Stack Web Developer',
       provider: 'LinkedIn Learning',
       color: '#0077b5',
-      link: 'https://drive.google.com/file/d/your-web-dev-certificate-link/view'
+      link: 'https://ibb.co/HLV0HTHZ'
     },
     {
       icon: <SecurityIcon sx={{ fontSize: 24 }} />,
@@ -75,7 +75,7 @@ const Certificates = () => {
       title: 'Python (Basic)',
       provider: 'HackerRank',
       color: '#ff6d00',
-      link: 'https://drive.google.com/file/d/your-python-certificate-link/view'
+      link: 'https://www.hackerrank.com/certificates/iframe/e6cd915e56e1'
     }
   ];
 

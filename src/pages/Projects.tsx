@@ -46,6 +46,13 @@ const Projects = () => {
       technologies: ['HTML', 'CSS', 'JavaScript', 'React.js'],
       githubLink: 'https://github.com/yadav-karishma/tic-tac-toe'
     },
+    
+    {
+      title: 'Restaurant Website',
+      description: 'Designed a restaurant website to deliver comprehensive information, showcase the menu, highlight special offers, and enable seamless online booking. Created an eye-catching promotional poster and implemented a pre-table booking system.',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      githubLink: 'https://github.com/yadav-karishma/Ready-Set-Banquet-Restaurant'
+    },
     {
       title: 'Sudoku Solver',
       description: 'Developed a Sudoku solver in Python, leveraging backtracking algorithms for efficient and accurate puzzle solving. Created a user-friendly interface for custom puzzle input and optimized the algorithm for complex puzzles.',
@@ -53,11 +60,18 @@ const Projects = () => {
       githubLink: 'https://github.com/yadav-karishma'
     },
     {
-      title: 'Restaurant Website',
-      description: 'Designed a restaurant website to deliver comprehensive information, showcase the menu, highlight special offers, and enable seamless online booking. Created an eye-catching promotional poster and implemented a pre-table booking system.',
-      technologies: ['HTML', 'CSS', 'JavaScript'],
-      githubLink: 'https://github.com/yadav-karishma/Ready-Set-Banquet-Restaurant'
+      title: 'Portfolio Website',
+      description: 'I designed and developed a fully responsive Portfolio Website to showcase my technical skills, projects, and achievements in a professional format. The site features an interactive user interface, smooth scrolling, and dynamic sections for About Me, Skills, Projects, Contact, and Resume download.',
+      technologies: ['React.js', 'HTML', 'CSS', 'JavaScript'],
+      githubLink: 'https://github.com/yadav-karishma/my_portfolio'
+    },
+    {
+      title: 'Car_EMI_Calculator',
+      description: 'Developed a Car EMI Calculator using HTML, CSS, and JavaScript, providing users with an easy way to calculate monthly loan payments for car purchases. The calculator includes features for loan amount, interest rate, and loan term inputs, and displays the calculated EMI amount.',
+      technologies: ['React.js', 'HTML', 'CSS', 'JavaScript'],
+      githubLink: 'https://github.com/yadav-karishma/Car_EMI_Calculator'
     }
+
   ];
 
   const displayedProjects = showAll ? projects : projects.slice(0, 3);

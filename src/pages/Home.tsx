@@ -144,7 +144,7 @@ const Home = () => {
               }}
             >
               <img
-                src="/images/your-image.jpg" // Replace with your image path
+                src="/photo1.jpg"
                 alt="Profile"
                 style={{
                   width: '100%',
