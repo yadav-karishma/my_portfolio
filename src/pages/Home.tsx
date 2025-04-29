@@ -45,7 +45,18 @@ const Home = () => {
               alignItems: { xs: 'center', md: 'flex-start' },
               textAlign: { xs: 'center', md: 'left' },
             }}
-          >
+          > <Typography
+          variant="h5"
+          color="text.secondary"
+          paragraph
+          sx={{
+            animation: `${fadeIn} 1s ease-out 0.3s both`,
+            maxWidth: '600px',
+            mb: 4,
+          }}
+        >
+          Hi, I'm
+        </Typography>
             <Typography
               variant="h1"
               component="h1"
@@ -59,7 +70,7 @@ const Home = () => {
                 mb: 2,
               }}
             >
-              Welcome to My Portfolio
+               Karishma Yadav
             </Typography>
             <Typography
               variant="h5"

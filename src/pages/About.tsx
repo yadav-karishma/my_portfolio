@@ -113,7 +113,7 @@ const About = () => {
               mb: 4,
             }}
           >
-            Karishma Yadav
+            About Me
           </Typography>
           <Typography
             variant="h6"
